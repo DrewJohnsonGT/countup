@@ -22,6 +22,7 @@ export const useHomeLogic = () => {
     const seconds = Math.floor((diff % (1000 * 60)) / 1000);
     return { days, hours, minutes, seconds };
   };
+
   useEffect(() => {
     const interval = setInterval(() => {
       setTimeSince(getTimeSince());
