@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 const TIME = new Date(
-  'Sat May 13 2023 21:00:00 GMT-0400 (Eastern Daylight Time)',
+  'Wed May 17 2023 15:45:00 GMT-0400 (Eastern Daylight Time)',
 );
 
 export const useHomeLogic = () => {
