@@ -1,21 +1,18 @@
 import { useEffect, useState } from 'react';
+import { TimeSince } from 'types';
 
-const TIME = new Date(
-  'Tue May 30 2023 00:00:00 GMT-0400 (Eastern Daylight Time)',
-);
+const TIMES = [
+  new Date('Tue May 30 2023 00:00:00 GMT-0400 (Eastern Daylight Time)'),
+  new Date('Tue Jun 13 2023 20:00:00 GMT-0400 (Eastern Daylight Time)'),
+];
 
 export const useHomeLogic = () => {
-  const [timeSince, setTimeSince] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
+  const [timeSince, setTimeSince] = useState<TimeSince[]>();
 
   // Find time since TIME and update every second
-  const getTimeSince = () => {
+  const getTimeSince = (time: Date) => {
     const now = new Date();
-    const diff = now.getTime() - TIME.getTime();
+    const diff = now.getTime() - time.getTime();
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
@@ -25,7 +22,7 @@ export const useHomeLogic = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTimeSince(getTimeSince());
+      setTimeSince(TIMES.map((time) => getTimeSince(time)));
     }, 1000);
     return () => clearInterval(interval);
   }, []);
