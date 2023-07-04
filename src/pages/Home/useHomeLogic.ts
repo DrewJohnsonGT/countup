@@ -3,7 +3,7 @@ import { TimeSince } from 'types';
 
 const TIMES = [
   new Date('Tue May 30 2023 00:00:00 GMT-0400 (Eastern Daylight Time)'),
-  new Date('Sun Jul 02 2023 19:18:00 GMT-0400 (Eastern Daylight Time)'),
+  new Date('Mon Jul 03 2023 20:48:00 GMT-0400 (Eastern Daylight Time)'),
 ];
 
 export const useHomeLogic = () => {
