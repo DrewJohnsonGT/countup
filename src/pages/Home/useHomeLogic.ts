@@ -3,8 +3,16 @@ import { TimeSince } from 'types';
 
 const TIMES = [
   new Date('Tue May 30 2023 00:00:00 GMT-0400 (Eastern Daylight Time)'),
-  new Date('Mon Jul 03 2023 20:48:00 GMT-0400 (Eastern Daylight Time)'),
+  new Date('Tue Jul 04 2023 13:30:00 GMT-0400 (Eastern Daylight Time)'),
 ];
+
+const getPercentageOfAMonth = (date: Date) => {
+  const currentDate = new Date();
+  const ms = currentDate.getTime() - date.getTime();
+  const month = 1000 * 60 * 60 * 24 * 30;
+  const percentage = (ms / month) * 100;
+  return Math.round(percentage * 100) / 100;
+};
 
 export const useHomeLogic = () => {
   const [timeSince, setTimeSince] = useState<TimeSince[]>();
@@ -28,6 +36,7 @@ export const useHomeLogic = () => {
   }, []);
 
   return {
+    percentOfAMonth: getPercentageOfAMonth(TIMES[1]),
     timeSince,
   };
 };
